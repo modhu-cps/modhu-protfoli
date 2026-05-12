@@ -123,3 +123,53 @@
     @apply bg-background text-foreground;
   }
   }
+
+@layer utilities {
+
+  /* Apple Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+  }
+
+  /* Premium 3D Hover */
+  .card-3d {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .card-3d:hover {
+    transform:
+      translateY(-8px)
+      scale(1.02);
+
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  /* Smooth Animation */
+  .smooth {
+    transition: all 0.3s ease;
+  }
+
+  /* Cinematic Background Orb */
+  .bg-orb {
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 9999px;
+
+    filter: blur(100px);
+
+    opacity: 0.2;
+  }
+}
