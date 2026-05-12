@@ -1,0 +1,78 @@
+import type { Certification } from '@/lib/types';
+
+export const certifications: Certification[] = [
+  {
+    id: 'aws-security-specialty',
+    title: 'AWS Certified Security - Specialty',
+    issuer: 'Amazon Web Services',
+    date: '2024-01',
+    expiryDate: '2027-01',
+    credentialId: 'AWS-SEC-2024-XXXXX',
+    credentialUrl: 'https://aws.amazon.com/certification/',
+    image: '/images/certs/aws-security.png',
+    skills: ['Cloud Security', 'IAM', 'Encryption', 'Incident Response'],
+    description: 'Advanced certification demonstrating expertise in securing AWS workloads and implementing security best practices.',
+  },
+  {
+    id: 'comptia-security-plus',
+    title: 'CompTIA Security+',
+    issuer: 'CompTIA',
+    date: '2023-06',
+    expiryDate: '2026-06',
+    credentialId: 'COMP001234567890',
+    credentialUrl: 'https://comptia.org/certifications/security',
+    image: '/images/certs/security-plus.png',
+    skills: ['Network Security', 'Threats', 'Risk Management', 'Cryptography'],
+    description: 'Foundational cybersecurity certification validating baseline skills for IT security professionals.',
+  },
+  {
+    id: 'gcp-cloud-engineer',
+    title: 'Google Cloud Professional Cloud Architect',
+    issuer: 'Google Cloud',
+    date: '2023-09',
+    expiryDate: '2025-09',
+    credentialId: 'GCP-PCA-XXXXX',
+    credentialUrl: 'https://cloud.google.com/certification/',
+    image: '/images/certs/gcp-architect.png',
+    skills: ['GCP', 'Cloud Architecture', 'Kubernetes', 'IAM'],
+    description: 'Professional certification demonstrating ability to design and manage Google Cloud solutions.',
+  },
+  {
+    id: 'azure-security-engineer',
+    title: 'Microsoft Certified: Azure Security Engineer Associate',
+    issuer: 'Microsoft',
+    date: '2023-11',
+    expiryDate: '2025-11',
+    credentialId: 'AZURE-SEC-XXXXX',
+    credentialUrl: 'https://learn.microsoft.com/certifications/',
+    image: '/images/certs/azure-security.png',
+    skills: ['Azure Security', 'Identity Protection', 'Security Operations'],
+    description: 'Certification validating skills in implementing security controls and threat protection on Azure.',
+  },
+  {
+    id: 'oscp',
+    title: 'Offensive Security Certified Professional (OSCP)',
+    issuer: 'Offensive Security',
+    date: '2023-03',
+    credentialId: 'OS-XXXXX',
+    credentialUrl: 'https://offensive-security.com/',
+    image: '/images/certs/oscp.png',
+    skills: ['Penetration Testing', 'Exploit Development', 'Privilege Escalation'],
+    description: 'Hands-on penetration testing certification demonstrating practical offensive security skills.',
+  },
+  {
+    id: 'tensorflow-developer',
+    title: 'TensorFlow Developer Certificate',
+    issuer: 'Google',
+    date: '2023-08',
+    credentialId: 'TF-DEV-XXXXX',
+    credentialUrl: 'https://tensorflow.org/certificate',
+    image: '/images/certs/tensorflow.png',
+    skills: ['Machine Learning', 'Deep Learning', 'TensorFlow', 'Computer Vision'],
+    description: 'Certification demonstrating proficiency in building and training neural networks using TensorFlow.',
+  },
+];
+
+export function getCertificationById(id: string): Certification | undefined {
+  return certifications.find(cert => cert.id === id);
+}
