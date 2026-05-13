@@ -56,11 +56,11 @@ export function TeamPageContent() {
                   {/* Image */}
                   <div className="relative aspect-square md:aspect-auto bg-gradient-to-br from-primary/30 to-accent/30">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                        <span className="text-5xl font-bold text-white">
-                          {founder.name.charAt(0)}
-                        </span>
-                      </div>
+                      <img
+                        src={founder.image}
+                        alt={founder.name}
+      									className="h-32 w-32 rounded-full object-cover border-4 border-white/10 shadow-2xl"
+												/>
                     </div>
                     {/* Decorative elements */}
                     <motion.div
@@ -140,11 +140,11 @@ export function TeamPageContent() {
                 <div className="glass h-full rounded-2xl p-6 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
                   {/* Avatar */}
                   <div className="relative mx-auto mb-4">
-                    <div className="h-24 w-24 mx-auto rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                      <span className="text-3xl font-bold text-primary/60">
-                        {member.name.charAt(0)}
-                      </span>
-                    </div>
+                    <img
+  									src={member.image}
+ 										 alt={member.name}
+  										className="h-24 w-24 mx-auto rounded-full object-cover border border-white/10 shadow-lg"
+											/>
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent opacity-0 group-hover:opacity-20 transition-opacity" />
                   </div>
 
