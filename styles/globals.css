@@ -356,3 +356,11 @@
       opacity 350ms ease;
   }
                                           }
+	/* globals.css এ এটা যোগ করুন */
+.card {
+  @apply card-elevated card-animate;
+}
+
+button {
+  @apply transition-glass;
+}
