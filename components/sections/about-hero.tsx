@@ -12,14 +12,15 @@ export function AboutHero() {
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="glass glass-lg border-accent-top relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 rounded-[2rem]">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
             {/* Content */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+ 	   				 initial={{ opacity: 0, x: -20 }}
+  						animate={{ opacity: 1, x: 0 }}
+ 							 transition={{ duration: 0.5 }}
+  							className="glass hover-lift border-neon-blue rounded-3xl p-8"
+								>
               <Badge variant="outline" className="mb-4 bg-white/5">
                 About Me
               </Badge>
@@ -40,8 +41,8 @@ export function AboutHero() {
 
               {/* Quick facts */}
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5">
+                <div className="glass-sm hover-lift-sm flex items-center gap-3 text-muted-foreground rounded-2xl p-4 border border-white/10">
+                  <div className="glass-sm flex h-10 w-10 items-center justify-center rounded-xl border border-white/10">
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <span>Remote / Worldwide</span>
@@ -74,7 +75,7 @@ export function AboutHero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative aspect-square overflow-hidden rounded-3xl">
+              <div className="glass glass-lg border-neon-purple relative aspect-square overflow-hidden rounded-[2rem] p-6">
                 {/* Gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30" />
                 
@@ -92,7 +93,7 @@ export function AboutHero() {
                 <motion.div
                   animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute top-12 left-12 glass rounded-xl p-4"
+                  className="absolute top-12 left-12 glass hover-lift border-neon-cyan rounded-2xl p-4"
                 >
                   <div className="text-2xl font-bold text-foreground">AI</div>
                   <div className="text-xs text-muted-foreground">Automation</div>
