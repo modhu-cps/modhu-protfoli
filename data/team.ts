@@ -6,7 +6,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Modhu Sudhan Roy',
     role: 'Founder & Lead Engineer',
     bio: 'Passionate about building intelligent systems at the intersection of AI and security. Leading the vision for next-generation automation solutions that empower businesses and protect digital assets.',
-    image: '/images/team/modhu.jpg',
+    image: 'https://i.postimg.cc/QC9wr2vV/modhu.jpg',
     skills: ['AI/ML', 'Security', 'Cloud Architecture', 'Leadership'],
     socials: {
       github: 'https://github.com',
