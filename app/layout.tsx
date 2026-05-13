@@ -101,12 +101,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <body className="min-h-screen font-sans antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={true}
-          disableTransitionOnChange
-        >
+        <NextThemesProvider
+  attribute="class"
+  defaultTheme="system"
+  enableSystem={true}
+  disableTransitionOnChange
+>
           <ScrollProgress />
           <MouseGlow />
           <Navbar />
