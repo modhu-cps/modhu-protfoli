@@ -116,20 +116,17 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply text-foreground;
-    /* 🍏 Apple-style subtle gradient background */
+    @apply bg-background text-foreground;
     background: linear-gradient(135deg, #f5f7fa 0%, #e5e9f0 50%, #c3cfe2 100%);
     background-attachment: fixed;
   }
 
-  /* Dark mode body gradient */
   .dark body {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   }
+
+  /* আগের * সিলেক্টর রিমুভ করেছি — এটাই আইকনের রঙ নষ্ট করছিল */
 }
 
 /* ============================================
@@ -167,7 +164,6 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
   }
 
-  /* For dark mode cards */
   .dark .card-3d {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   }
@@ -209,18 +205,10 @@
     transform: translateY(30px);
   }
 
-  .animate-card-in-delay-1 {
-    animation-delay: 0.1s;
-  }
-  .animate-card-in-delay-2 {
-    animation-delay: 0.2s;
-  }
-  .animate-card-in-delay-3 {
-    animation-delay: 0.3s;
-  }
-  .animate-card-in-delay-4 {
-    animation-delay: 0.4s;
-  }
+  .animate-card-in-delay-1 { animation-delay: 0.1s; }
+  .animate-card-in-delay-2 { animation-delay: 0.2s; }
+  .animate-card-in-delay-3 { animation-delay: 0.3s; }
+  .animate-card-in-delay-4 { animation-delay: 0.4s; }
 }
 
 @keyframes cardEntry {
@@ -231,10 +219,43 @@
 }
 
 /* ============================================
-   🏆 Smooth transitions for all interactive elements
+   🎛️ Clear Glass Button (ক্লিয়ার বাটন)
+   ============================================ */
+@layer components {
+  .btn-glass {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-300;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--foreground);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .dark .btn-glass {
+    background: rgba(30, 41, 59, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .dark .btn-glass:hover {
+    background: rgba(30, 41, 59, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+}
+
+/* ============================================
+   🏆 Smooth transitions for interactive elements
    ============================================ */
 @layer base {
-  a, button, .card, .card-3d {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  a, button {
+    transition: all 0.2s ease;
   }
-  }
+    }
