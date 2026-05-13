@@ -101,12 +101,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <body className="min-h-screen font-sans antialiased">
-        <NextThemesProvider
-  attribute="class"
-  defaultTheme="system"
-  enableSystem={true}
-  disableTransitionOnChange
->
+        // app/layout.tsx (excerpt)
+<ThemeProvider attribute="class" defaultTheme="system">
+  <Navbar />
+  <main className="relative">{children}</main>
+  <Footer />
+  {process.env.NODE_ENV === 'production' && <Analytics />}
+</ThemeProvider>
           <ScrollProgress />
           <MouseGlow />
           <Navbar />
