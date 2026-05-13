@@ -54,7 +54,8 @@ export function AboutStats() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="glass rounded-2xl p-6 h-full transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                {/* ==== Apple-style 3D glass card with gradient border ==== */}
+                <div className="glass card-3d gradient-border p-6 h-full">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 mb-4">
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
