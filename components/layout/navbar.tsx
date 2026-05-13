@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navItems } from '@/lib/config';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,6 +100,9 @@ export function Navbar() {
                 );
               })}
             </div>
+            <div className="hidden md:flex items-center gap-2">
+ 				 <ThemeToggle />
+	 </div>
 
             {/* CTA Button */}
             <div className="hidden md:block">
