@@ -1,81 +1,76 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─────────────────────────────────────────────
-   BASE THEME TOKENS
-──────────────────────────────────────────── */
-
+/* =========================
+   ROOT (LIGHT MODE)
+========================= */
 :root {
   --background: oklch(0.98 0.003 240);
   --foreground: oklch(0.145 0 0);
 
-  --card: oklch(1 0 0 / 0.55);
+  --card: oklch(1 0 0 / 0.75);
   --card-foreground: oklch(0.145 0 0);
 
-  --popover: oklch(1 0 0 / 0.75);
+  --popover: oklch(1 0 0 / 0.85);
   --popover-foreground: oklch(0.145 0 0);
 
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
 
-  --secondary: oklch(0.97 0.002 240 / 0.7);
-  --muted: oklch(0.97 0.002 240 / 0.5);
-
+  --secondary: oklch(0.97 0.002 240 / 0.8);
+  --muted: oklch(0.97 0.002 240 / 0.6);
   --muted-foreground: oklch(0.556 0 0);
 
   --accent: oklch(0.97 0.004 240 / 0.7);
   --accent-foreground: oklch(0.205 0 0);
 
-  --border: oklch(0.85 0.005 240 / 0.4);
+  --border: oklch(0.85 0.005 240 / 0.5);
   --input: oklch(0.922 0.003 240 / 0.6);
   --ring: oklch(0.6 0.12 240);
 
-  --radius: 0.9rem;
+  --radius: 0.875rem;
 
-  /* Background gradient */
-  --bg-gradient:
-    radial-gradient(circle at 20% 20%, rgba(120,120,255,0.15), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(255,120,200,0.12), transparent 45%),
-    linear-gradient(to bottom, #f8fafc, #eef2ff);
+  /* glass fix */
+  --glass-bg: oklch(1 0 0 / 0.55);
+  --glass-border: oklch(0 0 0 / 0.08);
 }
 
-/* ─────────────────────────────────────────────
-   DARK MODE
-──────────────────────────────────────────── */
-
+/* =========================
+   DARK MODE (FIXED)
+========================= */
 .dark {
   --background: oklch(0.12 0.01 240);
   --foreground: oklch(0.985 0 0);
 
-  --card: oklch(0.18 0.012 240 / 0.55);
+  --card: oklch(0.18 0.012 240 / 0.75);
   --card-foreground: oklch(0.985 0 0);
 
-  --popover: oklch(0.16 0.01 240 / 0.85);
+  --popover: oklch(0.16 0.01 240 / 0.9);
+  --popover-foreground: oklch(0.985 0 0);
 
   --primary: oklch(0.985 0 0);
   --primary-foreground: oklch(0.205 0 0);
 
-  --secondary: oklch(0.22 0.01 240 / 0.6);
-  --muted: oklch(0.22 0.01 240 / 0.4);
-
+  --secondary: oklch(0.22 0.01 240 / 0.7);
+  --muted: oklch(0.22 0.01 240 / 0.5);
   --muted-foreground: oklch(0.708 0 0);
 
   --accent: oklch(0.22 0.012 240 / 0.6);
+  --accent-foreground: oklch(0.985 0 0);
 
   --border: oklch(1 0 0 / 0.12);
+  --input: oklch(1 0 0 / 0.08);
+  --ring: oklch(0.55 0.18 240);
 
-  --bg-gradient:
-    radial-gradient(circle at 20% 20%, rgba(120,120,255,0.18), transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(255,120,200,0.15), transparent 50%),
-    linear-gradient(to bottom, #0a0a0f, #0b0b12);
+  --glass-bg: oklch(0.22 0.015 240 / 0.6);
+  --glass-border: oklch(1 0 0 / 0.12);
 }
 
-/* ─────────────────────────────────────────────
-   BASE STYLES
-──────────────────────────────────────────── */
-
+/* =========================
+   BASE FIX
+========================= */
 @layer base {
   * {
     @apply border-border;
@@ -83,98 +78,56 @@
 
   body {
     @apply bg-background text-foreground;
-    background-image: var(--bg-gradient);
-    background-attachment: fixed;
-    min-height: 100dvh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
   }
 }
 
-/* ─────────────────────────────────────────────
-   GLASS SYSTEM (MAIN FIX)
-──────────────────────────────────────────── */
-
+/* =========================
+   GLASS FIX (IMPORTANT)
+========================= */
 .glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
+/* hover fix */
 .glass:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
 }
 
-.dark .glass {
-  background: rgba(20, 20, 20, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
-}
-
-/* ─────────────────────────────────────────────
-   CARD SYSTEM FIX
-──────────────────────────────────────────── */
-
-[data-slot="card"] {
+/* =========================
+   CARD FIX (IMPORTANT)
+========================= */
+[data-slot="card"],
+.card {
   background: var(--card);
   border: 1px solid var(--border);
-  backdrop-filter: blur(18px);
   border-radius: var(--radius);
 }
 
-/* ─────────────────────────────────────────────
-   INPUT / BUTTON FIX
-──────────────────────────────────────────── */
-
+/* =========================
+   INPUT FIX
+========================= */
 input,
-textarea,
-select {
-  background: rgba(255,255,255,0.06);
+textarea {
+  background: var(--glass-bg);
   border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
 }
 
-input:focus {
-  outline: none;
-  border-color: rgba(99,102,241,0.6);
-  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
-}
-
-/* ─────────────────────────────────────────────
-   BUTTON
-──────────────────────────────────────────── */
-
-button {
-  transition: all 0.2s ease;
-}
-
-button:hover {
-  transform: translateY(-1px);
-}
-
-/* ─────────────────────────────────────────────
+/* =========================
    SCROLLBAR
-──────────────────────────────────────────── */
-
+========================= */
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(100,100,100,0.4);
-  border-radius: 999px;
-}
-
-/* ─────────────────────────────────────────────
-   SELECTION
-──────────────────────────────────────────── */
-
-::selection {
-  background: rgba(99,102,241,0.2);
+  background: var(--border);
+  border-radius: 10px;
 }
