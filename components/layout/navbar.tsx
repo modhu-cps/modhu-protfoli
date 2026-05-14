@@ -142,11 +142,10 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 md:hidden"
           >
-            {/* Backdrop – closes when clicking directly on it */}
+            {/* Backdrop – closes only when clicking directly on it */}
             <div
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               onClick={(e) => {
-                // Only close if the click is exactly on the backdrop
                 if (e.target === e.currentTarget) {
                   setIsMobileMenuOpen(false);
                 }
@@ -159,7 +158,7 @@ export function Navbar() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="absolute right-0 top-0 bottom-0 w-72 bg-card/95 backdrop-blur-xl p-6 shadow-2xl z-10"
             >
-              {/* Close button – guaranteed to work */}
+              {/* ✅ Close button – guaranteed to work */}
               <div className="flex justify-start mb-8">
                 <button
                   type="button"
@@ -224,4 +223,4 @@ export function Navbar() {
       </AnimatePresence>
     </>
   );
-                        }
+                  }
