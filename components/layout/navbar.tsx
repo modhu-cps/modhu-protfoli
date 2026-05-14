@@ -151,16 +151,16 @@ export function Navbar() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="absolute right-0 top-0 bottom-0 w-72 bg-card/95 backdrop-blur-xl p-6 shadow-2xl"
             >
-              <div className="flex justify-end mb-8">
-                <motion.button
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5"
-                  aria-label="Close menu"
-                >
-                  <X className="h-5 w-5" />
-                </motion.button>
-              </div>
+              <div className="flex justify-start mb-8">
+  <motion.button
+    whileTap={{ scale: 0.9 }}
+    onClick={() => setIsMobileMenuOpen(false)}
+    className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5"
+    aria-label="Close menu"
+  >
+    <X className="h-5 w-5" />
+  </motion.button>
+</div>
               <div className="flex flex-col gap-2">
                 {navItems.map((item, index) => {
                   const isActive = pathname === item.href;
