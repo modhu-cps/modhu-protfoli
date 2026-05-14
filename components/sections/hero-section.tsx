@@ -131,18 +131,39 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* ── RIGHT: Empty (image is full-screen background) ── */}
+          {/* ── RIGHT: Demo text overlay + floating badge ── */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:flex items-center justify-center"
+            className="hidden lg:flex items-center justify-center relative"
           >
-            {/* Floating decorative badge */}
+            {/* ✨ Demo text card – bottom right corner */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="absolute bottom-8 right-8 glass rounded-2xl border border-[var(--glass-border)] px-5 py-4 text-sm text-white space-y-2.5 backdrop-blur-xl"
+            >
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-blue-400" />
+                <span>5+ Years Experience</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-blue-400" />
+                <span>AI &amp; Security Expert</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-blue-400" />
+                <span>10+ Projects Delivered</span>
+              </div>
+            </motion.div>
+
+            {/* Floating decorative badge (existing) */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity }}
-              className="glass rounded-2xl border border-[var(--glass-border)] px-5 py-3 text-sm text-[var(--text)] shadow-2xl"
+              className="absolute -bottom-3 -right-3 glass rounded-2xl border border-[var(--glass-border)] px-5 py-3 text-sm text-[var(--text)] shadow-2xl"
             >
               <span className="text-[var(--accent)] font-bold">10+</span> Projects
             </motion.div>
@@ -154,4 +175,4 @@ export function HeroSection() {
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[var(--bg)] to-transparent z-10" />
     </section>
   );
-                  }
+                }
