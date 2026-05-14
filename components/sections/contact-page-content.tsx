@@ -81,7 +81,7 @@ export function ContactPageContent() {
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Let&apos;s <span className="gradient-text">Connect</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-foreground/80 max-w-2xl mx-auto">
               Have a project in mind or want to collaborate? I&apos;d love to hear from you.
               Drop me a message and I&apos;ll get back to you as soon as possible.
             </p>
@@ -97,7 +97,7 @@ export function ContactPageContent() {
             >
               {/* Info cards */}
               <div className="space-y-4">
-                <div className="glass rounded-2xl p-6">
+                <div className="glass card-3d gradient-border-thick rounded-2xl p-6 hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
                       <Mail className="h-6 w-6 text-primary" />
@@ -106,7 +106,7 @@ export function ContactPageContent() {
                       <h3 className="font-semibold text-foreground">Email</h3>
                       <a
                         href={`mailto:${contactInfo.email}`}
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-foreground/80 hover:text-primary transition-colors font-medium"
                       >
                         {contactInfo.email}
                       </a>
@@ -114,26 +114,26 @@ export function ContactPageContent() {
                   </div>
                 </div>
 
-                <div className="glass rounded-2xl p-6">
+                <div className="glass card-3d gradient-border-thick rounded-2xl p-6 hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
                       <MapPin className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Location</h3>
-                      <p className="text-muted-foreground">{contactInfo.location}</p>
+                      <p className="text-foreground/80">{contactInfo.location}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="glass rounded-2xl p-6">
+                <div className="glass card-3d gradient-border-thick rounded-2xl p-6 hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
                       <Clock className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Availability</h3>
-                      <p className="text-muted-foreground">{contactInfo.availability}</p>
+                      <p className="text-foreground/80">{contactInfo.availability}</p>
                       <Badge className="mt-2 bg-green-500/20 text-green-400 border-0">
                         Open to work
                       </Badge>
@@ -143,7 +143,7 @@ export function ContactPageContent() {
               </div>
 
               {/* Social links */}
-              <div className="glass rounded-2xl p-6">
+              <div className="glass card-3d gradient-border-thick rounded-2xl p-6">
                 <h3 className="font-semibold text-foreground mb-4">Follow me</h3>
                 <div className="flex flex-wrap gap-3">
                   {socialLinks.slice(0, 3).map((social) => {
@@ -156,7 +156,7 @@ export function ContactPageContent() {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-muted-foreground hover:bg-white/10 hover:text-foreground transition-colors"
+                        className="flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-foreground/80 hover:bg-white/10 hover:text-primary transition-colors"
                       >
                         {Icon && <Icon className="h-5 w-5" />}
                         <span>{social.name}</span>
@@ -174,7 +174,7 @@ export function ContactPageContent() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:col-span-3"
             >
-              <div className="glass rounded-2xl p-8">
+              <div className="glass card-3d gradient-border-thick rounded-2xl p-8">
                 <h2 className="text-2xl font-bold text-foreground mb-6">
                   Send a Message
                 </h2>
@@ -191,7 +191,7 @@ export function ContactPageContent() {
                     <h3 className="text-xl font-semibold text-foreground">
                       Message Sent!
                     </h3>
-                    <p className="mt-2 text-muted-foreground">
+                    <p className="mt-2 text-foreground/80">
                       Thank you for reaching out. I&apos;ll get back to you soon.
                     </p>
                   </motion.div>
@@ -199,7 +199,7 @@ export function ContactPageContent() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid gap-6 sm:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="name" className="text-foreground/80">Name</Label>
                         <Input
                           id="name"
                           name="name"
@@ -207,11 +207,11 @@ export function ContactPageContent() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="bg-white/5 border-white/10 h-12"
+                          className="bg-white/5 border-white/10 h-12 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="email" className="text-foreground/80">Email</Label>
                         <Input
                           id="email"
                           name="email"
@@ -220,13 +220,13 @@ export function ContactPageContent() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="bg-white/5 border-white/10 h-12"
+                          className="bg-white/5 border-white/10 h-12 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
+                      <Label htmlFor="subject" className="text-foreground/80">Subject</Label>
                       <Input
                         id="subject"
                         name="subject"
@@ -234,12 +234,12 @@ export function ContactPageContent() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="bg-white/5 border-white/10 h-12"
+                        className="bg-white/5 border-white/10 h-12 focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
+                      <Label htmlFor="message" className="text-foreground/80">Message</Label>
                       <Textarea
                         id="message"
                         name="message"
@@ -248,7 +248,7 @@ export function ContactPageContent() {
                         onChange={handleChange}
                         required
                         rows={6}
-                        className="bg-white/5 border-white/10 resize-none"
+                        className="bg-white/5 border-white/10 resize-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
                       />
                     </div>
 
@@ -256,7 +256,7 @@ export function ContactPageContent() {
                       type="submit"
                       size="lg"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90"
+                      className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
                     >
                       {isSubmitting ? (
                         <>
@@ -279,4 +279,4 @@ export function ContactPageContent() {
       </section>
     </PageTransition>
   );
-  }
+                }
