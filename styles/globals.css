@@ -154,3 +154,64 @@ textarea {
     pointer-events: none;
   }
 }
+
+/* ============================================
+   🫧 Stronger Glass (মোটা ব্লার, স্পষ্ট ব্যাকগ্রাউন্ড)
+   ============================================ */
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.45);  /* opacity বাড়ানো */
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+
+  .dark .glass {
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+}
+
+/* ============================================
+   🌈 Thick Gradient Border (3px) – fully opaque
+   ============================================ */
+@layer components {
+  .gradient-border-thick {
+    position: relative;
+    border-radius: 1rem;  /* rounded-xl বা 2xl যেটা দরকার */
+    background: rgba(255,255,255,0.45); /* fallback */
+    backdrop-filter: blur(24px);  /* গ্লাসের সাথে মিলিয়ে */
+    outline: 3px solid transparent;
+    outline-offset: -3px;
+    /* gradient border via outline + background-clip কৌশল */
+    background-image: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), 
+                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  /* dark mode adjust */
+  .dark .gradient-border-thick {
+    background-image: linear-gradient(rgba(15,23,42,0.65), rgba(15,23,42,0.65)), 
+                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+  }
+
+  /* যদি আলাদা করে glass + gradient-border-thick ব্যবহার করো,
+     তাহলে এভাবে দিবে: <div className="glass gradient-border-thick ..."> */
+  .glass.gradient-border-thick {
+    background: rgba(255,255,255,0.45); /* opacity ওভাররাইড হতে পারে, তাই নির্দিষ্ট করো */
+    backdrop-filter: blur(24px);
+    outline: 3px solid transparent;
+    outline-offset: -3px;
+    background-image: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), 
+                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  .dark .glass.gradient-border-thick {
+    background-image: linear-gradient(rgba(15,23,42,0.65), rgba(15,23,42,0.65)), 
+                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+  }
+}
