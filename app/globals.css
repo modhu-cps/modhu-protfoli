@@ -4,62 +4,64 @@
 @custom-variant dark (&:is(.dark *));
 
 /* =========================
-   ROOT (LIGHT MODE - unchanged, you can update if needed)
+   ROOT (LIGHT MODE) – clean white
 ========================= */
 :root {
-  --background: oklch(0.98 0.003 240);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0 / 0.75);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0 / 0.85);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #3B82F6;
+  --background: #F5F5F7;
+  --foreground: #111111;
+  --card: rgba(255, 255, 255, 0.8);
+  --card-foreground: #111111;
+  --popover: rgba(255, 255, 255, 0.9);
+  --popover-foreground: #111111;
+  --primary: #111111;
   --primary-foreground: #FFFFFF;
-  --secondary: #8B5CF6;
+  --secondary: #3B82F6;
   --secondary-foreground: #FFFFFF;
-  --accent: #22D3EE;
-  --accent-foreground: #000000;
-  --muted: oklch(0.97 0.002 240 / 0.6);
-  --muted-foreground: oklch(0.556 0 0);
-  --border: oklch(0.85 0.005 240 / 0.5);
-  --input: oklch(0.922 0.003 240 / 0.6);
+  --accent: #3B82F6;
+  --accent-foreground: #FFFFFF;
+  --muted: rgba(0, 0, 0, 0.04);
+  --muted-foreground: #52525B;
+  --border: rgba(0, 0, 0, 0.08);
+  --input: rgba(0, 0, 0, 0.04);
   --ring: #3B82F6;
-  --radius: 0.875rem;
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-border: rgba(0, 0, 0, 0.12);
+  --radius: 28px;
+  --radius-sm: 18px;
+  --radius-btn: 999px;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.06);
 }
 
 /* =========================
-   DARK MODE – YOUR BRAND PALETTE
+   DARK MODE – pure premium black
 ========================= */
 .dark {
-  --background: #0A0A0F;
-  --foreground: #F8FAFC;
-  --card: rgba(255, 255, 255, 0.06);
-  --card-foreground: #F8FAFC;
-  --popover: rgba(255, 255, 255, 0.06);
-  --popover-foreground: #F8FAFC;
-  --primary: #3B82F6;
-  --primary-foreground: #FFFFFF;
-  --secondary: #8B5CF6;
+  --background: #050505;
+  --foreground: #FAFAFA;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-foreground: #FAFAFA;
+  --popover: rgba(5, 5, 5, 0.95);
+  --popover-foreground: #FAFAFA;
+  --primary: #FFFFFF;
+  --primary-foreground: #000000;
+  --secondary: #3B82F6;
   --secondary-foreground: #FFFFFF;
-  --accent: #22D3EE;
+  --accent: #3B82F6;
   --accent-foreground: #000000;
-  --muted: rgba(148, 163, 184, 0.15);
-  --muted-foreground: #94A3B8;
-  --border: rgba(255, 255, 255, 0.10);
-  --input: rgba(255, 255, 255, 0.08);
+  --muted: rgba(255, 255, 255, 0.04);
+  --muted-foreground: #A1A1AA;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.06);
   --ring: #3B82F6;
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 /* =========================
-   FONT & THEME
+   TYPOGRAPHY & THEME
 ========================= */
 @theme inline {
-  --font-sans: 'Inter', 'Geist', 'Geist Fallback', ui-sans-serif, system-ui;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: 'Inter', 'General Sans', 'SF Pro Display', ui-sans-serif, system-ui;
+  --font-mono: 'Geist Mono', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -88,106 +90,79 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 16px;
+    line-height: 1.6;
     min-height: 100vh;
   }
-
-  /* ── Global button hover as you wanted ── */
+  h1, h2, h3, h4 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  /* Smooth transitions system-wide */
+  a, button {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
   button:hover {
     transform: translateY(-2px);
-    filter: brightness(1.1);
   }
 }
 
 /* =========================
-   🫧 GLASS (Enhanced – deeper blur, luminous edge)
+   🫧 GLASS (pure minimal)
 ========================= */
 @layer components {
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius);
-    box-shadow:
-      0 12px 40px rgba(0, 0, 0, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   }
-
-  .dark .glass {
-    box-shadow:
-      0 12px 40px rgba(0, 0, 0, 0.6),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
+  /* dark mode already uses the right shadow */
   .glass:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  }
-
-  .dark .glass:hover {
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, 0.8),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
   }
 }
 
 /* =========================
-   🃏 3D CARD (your custom hover values)
+   🃏 3D CARD (subtle lift)
 ========================= */
 @layer components {
   .card-3d {
-    border-radius: 1rem;
+    border-radius: var(--radius);
     transform-style: preserve-3d;
     perspective: 1000px;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   }
-
-  /* Exactly as you requested */
   .card-3d:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow:
-      0 25px 50px rgba(0, 0, 0, 0.25),
-      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-  }
-
-  .dark .card-3d {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  }
-
-  .dark .card-3d:hover {
-    box-shadow:
-      0 25px 50px rgba(0, 0, 0, 0.8),
-      0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
   }
 }
 
 /* =========================
-   🌈 THICK GRADIENT BORDER (3px) + soft outer glow
+   🌈 GRADIENT BORDER (thin subtle)
 ========================= */
 @layer components {
   .gradient-border-thick {
     position: relative;
-    border-radius: 1rem;
+    border-radius: var(--radius);
     isolation: isolate;
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.15);
-    transition: box-shadow 0.3s ease;
   }
-
-  .gradient-border-thick:hover {
-    box-shadow: 0 0 25px rgba(139, 92, 246, 0.35), 0 8px 30px rgba(0, 0, 0, 0.1);
-  }
-
   .gradient-border-thick::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 3px;
-    background: linear-gradient(135deg, #3B82F6, #8B5CF6, #22D3EE, #3B82F6);
+    padding: 1.5px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.03)
+    );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -195,42 +170,65 @@
     pointer-events: none;
     z-index: -1;
   }
+}
 
-  .dark .gradient-border-thick {
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+/* =========================
+   🏆 HERO GRADIENT TEXT
+========================= */
+.gradient-text {
+  background: linear-gradient(90deg, #FFFFFF, #A1A1AA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .gradient-text {
+  background: linear-gradient(90deg, #FFFFFF, #A1A1AA);
+}
+:root .gradient-text {
+  /* Light mode – could be dark gradient, but let's keep subtle */
+  background: linear-gradient(90deg, #111111, #52525B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =========================
+   BUTTONS (glass & pill)
+========================= */
+@layer components {
+  .btn-glass {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    transition: all 0.35s ease;
   }
-
-  .dark .gradient-border-thick:hover {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5), 0 8px 30px rgba(0, 0, 0, 0.3);
+  .btn-glass:hover {
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .btn-primary {
+    background: #FFFFFF;
+    color: #000000;
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
   }
 }
 
 /* =========================
-   CARD FIX
+   SPACING HELPERS
 ========================= */
-[data-slot="card"],
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+.section-padding {
+  padding: 120px 0;
 }
-
-/* =========================
-   INPUT FIX
-========================= */
-input,
-textarea {
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
+.card-padding {
+  padding: 32px;
 }
-
-/* =========================
-   SCROLLBAR
-========================= */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 10px;
+.gap-24 {
+  gap: 24px;
 }
