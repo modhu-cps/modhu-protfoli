@@ -19,7 +19,7 @@ export function AboutHero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="glass card-3d gradient-border-thick rounded-3xl p-8 shadow-xl shadow-black/5 dark:shadow-black/40"
+              className="glass card-3d gradient-border-thick rounded-3xl p-8 shadow-xl shadow-black/5 dark:shadow-black/40 transition-shadow duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.25)]"
             >
               <Badge variant="outline" className="mb-4 bg-white/5">
                 About Me
@@ -30,56 +30,56 @@ export function AboutHero() {
                 <span className="gradient-text"> Intelligent Security</span>
               </h1>
 
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              <p className="mt-6 text-lg text-foreground/90 leading-relaxed">
                 I&apos;m Modhu Sudhan Roy, an AI Automation Engineer and Security Researcher passionate about
                 creating intelligent systems that protect and empower.
               </p>
 
-              <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+              <p className="mt-4 text-lg text-foreground/90 leading-relaxed">
                 My journey began with curiosity about systems, security and AI integration.
               </p>
 
-              {/* QUICK FACTS */}
+              {/* QUICK FACTS – text fully clear, no blur */}
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-lg shadow-black/5 dark:shadow-black/30">
+                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-md shadow-black/5 dark:shadow-black/20">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="text-foreground font-medium">Remote / Worldwide</span>
+                  <span className="text-foreground font-semibold">Remote / Worldwide</span>
                 </div>
 
-                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-lg shadow-black/5 dark:shadow-black/30">
+                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-md shadow-black/5 dark:shadow-black/20">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
                     <Calendar className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="text-foreground font-medium">7+ Years Experience</span>
+                  <span className="text-foreground font-semibold">7+ Years Experience</span>
                 </div>
 
-                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-lg shadow-black/5 dark:shadow-black/30">
+                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-md shadow-black/5 dark:shadow-black/20">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
                     <Briefcase className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="text-foreground font-medium">Available for Projects</span>
+                  <span className="text-foreground font-semibold">Available for Projects</span>
                 </div>
 
-                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-lg shadow-black/5 dark:shadow-black/30">
+                <div className="glass card-3d gradient-border-thick flex items-center gap-3 p-4 rounded-2xl shadow-md shadow-black/5 dark:shadow-black/20">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
                     <GraduationCap className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="text-foreground font-medium">MSc Cybersecurity</span>
+                  <span className="text-foreground font-semibold">MSc Cybersecurity</span>
                 </div>
               </div>
             </motion.div>
 
-            {/* RIGHT VISUAL */}
+            {/* RIGHT VISUAL – no corner shadow, only border & subtle glow */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative"
             >
-              <div className="glass card-3d gradient-border-thick relative aspect-square overflow-hidden rounded-[2rem] p-6 shadow-xl shadow-black/5 dark:shadow-black/40">
-                {/* Grid pattern – visible in both modes */}
+              <div className="glass card-3d gradient-border-thick relative aspect-square overflow-hidden rounded-[2rem] p-6">
+                {/* Grid pattern */}
                 <div
                   className="absolute inset-0 opacity-30 dark:opacity-25"
                   style={{
@@ -98,7 +98,7 @@ export function AboutHero() {
                   className="absolute top-12 left-12 glass card-3d gradient-border-thick rounded-2xl p-4 shadow-md shadow-black/10 dark:shadow-black/30"
                 >
                   <div className="text-2xl font-bold text-foreground">AI</div>
-                  <div className="text-xs text-muted-foreground">Automation</div>
+                  <div className="text-xs text-foreground/80">Automation</div>
                 </motion.div>
 
                 {/* Floating Security */}
@@ -108,7 +108,7 @@ export function AboutHero() {
                   className="absolute bottom-20 right-12 glass card-3d gradient-border-thick rounded-2xl p-4 shadow-md shadow-black/10 dark:shadow-black/30"
                 >
                   <div className="text-2xl font-bold text-foreground">Sec</div>
-                  <div className="text-xs text-muted-foreground">Security</div>
+                  <div className="text-xs text-foreground/80">Security</div>
                 </motion.div>
 
                 {/* Center Logo */}
@@ -127,11 +127,11 @@ export function AboutHero() {
                   className="absolute bottom-12 left-20 glass card-3d gradient-border-thick rounded-2xl p-4 shadow-md shadow-black/10 dark:shadow-black/30"
                 >
                   <div className="text-2xl font-bold text-foreground">IoT</div>
-                  <div className="text-xs text-muted-foreground">Systems</div>
+                  <div className="text-xs text-foreground/80">Systems</div>
                 </motion.div>
               </div>
 
-              {/* glow */}
+              {/* ambient glows */}
               <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-primary/30 blur-[80px]" />
               <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-accent/30 blur-[80px]" />
             </motion.div>
@@ -140,4 +140,4 @@ export function AboutHero() {
       </section>
     </PageTransition>
   );
-}
+                  }
