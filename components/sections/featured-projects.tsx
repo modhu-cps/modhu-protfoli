@@ -27,7 +27,7 @@ export function FeaturedProjects() {
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Selected Projects
           </h2>
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-lg text-foreground/80">
             A showcase of my most impactful projects in AI, security, and cloud infrastructure.
           </p>
         </motion.div>
@@ -43,9 +43,9 @@ export function FeaturedProjects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/50 p-1 transition-all duration-500 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
+              <div className="glass card-3d gradient-border-thick overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                 {/* Project image */}
-                <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
+                <div className="relative aspect-video overflow-hidden rounded-t-2xl bg-gradient-to-br from-primary/20 to-accent/20">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-4xl font-bold text-white/20">{project.title.charAt(0)}</div>
                   </div>
@@ -101,7 +101,7 @@ export function FeaturedProjects() {
                   <h3 className="text-xl font-semibold text-foreground transition-colors group-hover:text-primary">
                     {project.title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                  <p className="mt-2 text-sm text-foreground/80 line-clamp-2">
                     {project.description}
                   </p>
 
@@ -133,7 +133,11 @@ export function FeaturedProjects() {
           className="mt-12 flex justify-center"
         >
           <Link href="/projects">
-            <Button variant="outline" size="lg" className="group bg-white/5 border-white/10">
+            <Button
+              variant="outline"
+              size="lg"
+              className="group bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/30 hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] transition-all duration-300"
+            >
               View All Projects
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -142,4 +146,4 @@ export function FeaturedProjects() {
       </div>
     </section>
   );
-      }
+}
