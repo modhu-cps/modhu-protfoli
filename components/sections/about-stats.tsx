@@ -38,8 +38,8 @@ const aboutStats = [
 export function AboutStats() {
   return (
     <section className="relative py-16 lg:py-24 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/50 to-transparent" />
+      {/* Background – soft gradient overlay (grid feeling) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/30 to-transparent dark:via-muted/10" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -54,10 +54,11 @@ export function AboutStats() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                {/* ==== Apple-style 3D glass card with gradient border ==== */}
+                {/* Apple‑style 3D card with gradient border */}
                 <div className="glass card-3d gradient-border p-6 h-full">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 mb-4">
-                    <Icon className="h-6 w-6 text-primary" />
+                    {/* icon color fixed – always visible on any background */}
+                    <Icon className="h-6 w-6 text-foreground dark:text-white" />
                   </div>
                   <div className="text-3xl font-bold text-foreground">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
