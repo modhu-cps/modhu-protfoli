@@ -39,7 +39,7 @@ export function CertificationsPageContent() {
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Professional <span className="gradient-text">Certifications</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-foreground/80 max-w-2xl mx-auto">
               Industry-recognized certifications validating expertise in cloud security,
               cybersecurity, and emerging technologies.
             </p>
@@ -56,14 +56,14 @@ export function CertificationsPageContent() {
                 className="group cursor-pointer"
                 onClick={() => setSelectedCert(cert)}
               >
-                <div className="glass h-full rounded-2xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                <div className="glass card-3d gradient-border-thick h-full rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                   {/* Certificate icon/image placeholder */}
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-primary/20 to-accent/20">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Award className="h-16 w-16 text-primary/40" />
+                      <Award className="h-16 w-16 text-primary/60" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
-                    
+
                     {/* Issuer badge */}
                     <div className="absolute bottom-3 left-3">
                       <Badge className="bg-white/10 backdrop-blur-sm">
@@ -78,8 +78,8 @@ export function CertificationsPageContent() {
                   </h3>
 
                   {/* Date info */}
-                  <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
+                  <div className="mt-2 flex items-center gap-2 text-sm text-foreground/70">
+                    <Calendar className="h-4 w-4 text-primary" />
                     <span>Issued {formatDate(cert.date)}</span>
                   </div>
 
@@ -98,7 +98,7 @@ export function CertificationsPageContent() {
                   </div>
 
                   {/* View details hint */}
-                  <div className="mt-4 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-4 text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity font-medium">
                     Click to view details
                   </div>
                 </div>
@@ -112,20 +112,20 @@ export function CertificationsPageContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-16 glass rounded-2xl p-8"
+            className="mt-16 glass card-3d gradient-border-thick rounded-2xl p-8"
           >
             <div className="grid gap-8 sm:grid-cols-3 text-center">
               <div>
                 <div className="text-4xl font-bold text-foreground">{certifications.length}</div>
-                <div className="mt-1 text-muted-foreground">Total Certifications</div>
+                <div className="mt-1 text-foreground/80 font-medium">Total Certifications</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-foreground">5</div>
-                <div className="mt-1 text-muted-foreground">Certification Providers</div>
+                <div className="mt-1 text-foreground/80 font-medium">Certification Providers</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-foreground">100%</div>
-                <div className="mt-1 text-muted-foreground">Pass Rate</div>
+                <div className="mt-1 text-foreground/80 font-medium">Pass Rate</div>
               </div>
             </div>
           </motion.div>
@@ -151,20 +151,20 @@ export function CertificationsPageContent() {
                 exit={{ scale: 0.95, opacity: 0 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-lg glass rounded-2xl p-6 shadow-2xl"
+                className="relative w-full max-w-lg glass card-3d gradient-border-thick rounded-2xl p-6 shadow-2xl"
               >
                 {/* Close button */}
                 <button
                   onClick={() => setSelectedCert(null)}
                   className="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-colors"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-5 w-5 text-foreground" />
                 </button>
 
                 {/* Certificate preview */}
                 <div className="aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-gradient-to-br from-primary/20 to-accent/20">
                   <div className="h-full w-full flex items-center justify-center">
-                    <Award className="h-24 w-24 text-primary/40" />
+                    <Award className="h-24 w-24 text-primary/60" />
                   </div>
                 </div>
 
@@ -177,26 +177,26 @@ export function CertificationsPageContent() {
                 </h2>
 
                 {selectedCert.description && (
-                  <p className="mt-3 text-muted-foreground">
+                  <p className="mt-3 text-foreground/80">
                     {selectedCert.description}
                   </p>
                 )}
 
                 {/* Meta */}
                 <div className="mt-4 space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
+                  <div className="flex items-center gap-2 text-foreground/70">
+                    <Calendar className="h-4 w-4 text-primary" />
                     <span>Issued: {formatDate(selectedCert.date)}</span>
                   </div>
                   {selectedCert.expiryDate && (
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
+                    <div className="flex items-center gap-2 text-foreground/70">
+                      <Calendar className="h-4 w-4 text-primary" />
                       <span>Expires: {formatDate(selectedCert.expiryDate)}</span>
                     </div>
                   )}
                   {selectedCert.credentialId && (
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <CheckCircle className="h-4 w-4" />
+                    <div className="flex items-center gap-2 text-foreground/70">
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       <span>ID: {selectedCert.credentialId}</span>
                     </div>
                   )}
@@ -204,7 +204,7 @@ export function CertificationsPageContent() {
 
                 {/* Skills */}
                 <div className="mt-4">
-                  <p className="text-sm text-muted-foreground mb-2">Skills validated:</p>
+                  <p className="text-sm text-foreground/80 mb-2 font-medium">Skills validated:</p>
                   <div className="flex flex-wrap gap-2">
                     {selectedCert.skills.map((skill) => (
                       <Badge key={skill} variant="secondary" className="bg-white/5">
@@ -235,4 +235,4 @@ export function CertificationsPageContent() {
       </section>
     </PageTransition>
   );
-                    }
+      }
