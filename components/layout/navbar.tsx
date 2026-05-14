@@ -46,53 +46,26 @@ export function Navbar() {
                 : 'bg-transparent'
             )}
           >
-            {/* Logo */}
             <Link href="/" className="group flex items-center gap-2">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent">
                   <span className="text-lg font-bold text-white">M</span>
                 </div>
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent opacity-0 blur-xl transition-opacity group-hover:opacity-50" />
               </motion.div>
-              <span className="hidden text-lg font-semibold text-foreground sm:block">
-                Modhu
-              </span>
+              <span className="hidden text-lg font-semibold text-foreground sm:block">Modhu</span>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden items-center gap-1 md:flex">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link key={item.href} href={item.href}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="relative px-4 py-2"
-                    >
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="relative px-4 py-2">
                       {isActive && (
-                        <motion.div
-                          layoutId="navbar-active"
-                          className="absolute inset-0 rounded-lg bg-white/10"
-                          transition={{
-                            type: 'spring',
-                            stiffness: 380,
-                            damping: 30,
-                          }}
-                        />
+                        <motion.div layoutId="navbar-active" className="absolute inset-0 rounded-lg bg-white/10" transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
                       )}
-                      <span
-                        className={cn(
-                          'relative text-sm font-medium transition-colors',
-                          isActive
-                            ? 'text-foreground'
-                            : 'text-muted-foreground hover:text-foreground'
-                        )}
-                      >
+                      <span className={cn('relative text-sm font-medium transition-colors', isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground')}>
                         {item.label}
                       </span>
                     </motion.div>
@@ -101,25 +74,18 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Theme toggle */}
             <div className="hidden md:flex items-center gap-2">
               <ThemeToggle />
             </div>
 
-            {/* CTA Button */}
             <div className="hidden md:block">
               <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-primary/20 transition-shadow hover:shadow-xl hover:shadow-primary/30"
-                >
+                <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-primary/20 transition-shadow hover:shadow-xl hover:shadow-primary/30">
                   Get in Touch
                 </motion.button>
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -132,7 +98,6 @@ export function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -142,13 +107,10 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 md:hidden"
           >
-            {/* Backdrop – closes only when clicking directly on it */}
             <div
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               onClick={(e) => {
-                if (e.target === e.currentTarget) {
-                  setIsMobileMenuOpen(false);
-                }
+                if (e.target === e.currentTarget) setIsMobileMenuOpen(false);
               }}
             />
             <motion.nav
@@ -156,10 +118,33 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 bottom-0 w-72 bg-card/95 backdrop-blur-xl p-6 shadow-2xl z-10"
+              className="absolute right-0 top-0 bottom-0 w-72 bg-card/95 backdrop-blur-xl p-6 shadow-2xl z-10 flex flex-col"
             >
-              {/* ✅ Close button – guaranteed to work */}
-              <div className="flex justify-start mb-8">
+              {/* Navigation links */}
+              <div className="flex flex-col gap-2 flex-1">
+                {navItems.map((item, index) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <motion.div key={item.href} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.05 }}>
+                      <Link href={item.href}>
+                        <motion.div whileTap={{ scale: 0.98 }} className={cn('flex items-center rounded-xl px-4 py-3 text-base font-medium transition-colors', isActive ? 'bg-white/10 text-foreground' : 'text-muted-foreground hover:bg-white/5 hover:text-foreground')}>
+                          {item.label}
+                        </motion.div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: navItems.length * 0.05 }} className="mt-4">
+                  <Link href="/contact">
+                    <motion.button whileTap={{ scale: 0.98 }} className="w-full rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-medium text-white">
+                      Get in Touch
+                    </motion.button>
+                  </Link>
+                </motion.div>
+              </div>
+
+              {/* Close button – now at the very bottom */}
+              <div className="mt-8 pt-4 border-t border-white/10 flex justify-center">
                 <button
                   type="button"
                   onClick={(e) => {
@@ -173,54 +158,10 @@ export function Navbar() {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-
-              {/* Navigation links */}
-              <div className="flex flex-col gap-2">
-                {navItems.map((item, index) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <motion.div
-                      key={item.href}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link href={item.href}>
-                        <motion.div
-                          whileTap={{ scale: 0.98 }}
-                          className={cn(
-                            'flex items-center rounded-xl px-4 py-3 text-base font-medium transition-colors',
-                            isActive
-                              ? 'bg-white/10 text-foreground'
-                              : 'text-muted-foreground hover:bg-white/5 hover:text-foreground'
-                          )}
-                        >
-                          {item.label}
-                        </motion.div>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.length * 0.05 }}
-                  className="mt-4"
-                >
-                  <Link href="/contact">
-                    <motion.button
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-medium text-white"
-                    >
-                      Get in Touch
-                    </motion.button>
-                  </Link>
-                </motion.div>
-              </div>
             </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
-                  }
+}
