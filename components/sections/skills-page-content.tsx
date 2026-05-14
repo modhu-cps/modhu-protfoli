@@ -38,7 +38,7 @@ export function SkillsPageContent() {
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Technical <span className="gradient-text">Skills</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-foreground/80 max-w-2xl mx-auto">
               A comprehensive overview of my technical expertise across multiple domains,
               from AI and security to cloud infrastructure and development.
             </p>
@@ -57,7 +57,8 @@ export function SkillsPageContent() {
                   transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
                   className="group"
                 >
-                  <div className="glass h-full rounded-2xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                  {/* Apple-style glass card with gradient border + 3D + hover glow */}
+                  <div className="glass card-3d gradient-border-thick h-full rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                     {/* Header */}
                     <div className="flex items-center gap-4 mb-6">
                       <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
@@ -67,7 +68,7 @@ export function SkillsPageContent() {
                         <h3 className="text-xl font-semibold text-foreground">
                           {category.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-foreground/70">
                           {category.description}
                         </p>
                       </div>
@@ -86,8 +87,8 @@ export function SkillsPageContent() {
                           }}
                         >
                           <div className="flex justify-between text-sm mb-1.5">
-                            <span className="text-muted-foreground">{skill.name}</span>
-                            <span className="text-foreground font-medium">{skill.level}%</span>
+                            <span className="text-foreground/80">{skill.name}</span>
+                            <span className="text-foreground font-semibold">{skill.level}%</span>
                           </div>
                           <div className="h-2 overflow-hidden rounded-full bg-white/5">
                             <motion.div
@@ -119,10 +120,10 @@ export function SkillsPageContent() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="mt-16 text-center"
           >
-            <div className="glass inline-block rounded-2xl px-8 py-6">
-              <p className="text-muted-foreground">
+            <div className="glass card-3d gradient-border-thick inline-block rounded-2xl px-8 py-6">
+              <p className="text-foreground/80">
                 Always learning and expanding my skill set.{' '}
-                <span className="text-foreground font-medium">
+                <span className="text-foreground font-semibold">
                   Currently exploring: WebAssembly, Rust, and Zero-Knowledge Proofs
                 </span>
               </p>
