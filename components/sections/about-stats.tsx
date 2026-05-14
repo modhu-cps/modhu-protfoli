@@ -54,8 +54,8 @@ export function AboutStats() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                {/* Apple‑style 3D thick border card */}
-                <div className="glass card-3d gradient-border-thick p-6 h-full">
+                {/* Glass + 3D + Gradient Border + Light Black Shadow */}
+                <div className="glass card-3d gradient-border-thick p-6 h-full shadow-lg shadow-black/10 dark:shadow-black/30">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 mb-4">
                     <Icon className="h-6 w-6 text-foreground dark:text-white" />
                   </div>
@@ -72,4 +72,4 @@ export function AboutStats() {
       </div>
     </section>
   );
-    }
+}
