@@ -37,7 +37,7 @@ export function TeamPageContent() {
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Meet the <span className="gradient-text">Team</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-foreground/80 max-w-2xl mx-auto">
               A passionate group of engineers, researchers, and creators building
               the future of intelligent and secure systems.
             </p>
@@ -51,7 +51,7 @@ export function TeamPageContent() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mb-16"
             >
-              <div className="glass rounded-3xl overflow-hidden">
+              <div className="glass card-3d gradient-border-thick rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                 <div className="grid md:grid-cols-2 gap-0">
                   {/* Image */}
                   <div className="relative aspect-square md:aspect-auto bg-gradient-to-br from-primary/30 to-accent/30">
@@ -59,8 +59,8 @@ export function TeamPageContent() {
                       <img
                         src={founder.image}
                         alt={founder.name}
-      									className="h-32 w-32 rounded-full object-cover border-4 border-white/10 shadow-2xl"
-												/>
+                        className="h-32 w-32 rounded-full object-cover border-4 border-white/10 shadow-2xl"
+                      />
                     </div>
                     {/* Decorative elements */}
                     <motion.div
@@ -68,7 +68,7 @@ export function TeamPageContent() {
                       transition={{ duration: 6, repeat: Infinity }}
                       className="absolute top-8 left-8 glass rounded-lg px-3 py-2"
                     >
-                      <span className="text-sm font-medium">{founder.role}</span>
+                      <span className="text-sm font-medium text-foreground/90">{founder.role}</span>
                     </motion.div>
                     <motion.div
                       animate={{ y: [0, 10, 0] }}
@@ -88,7 +88,7 @@ export function TeamPageContent() {
                       {founder.name}
                     </h2>
                     <p className="mt-2 text-lg text-primary">{founder.role}</p>
-                    <p className="mt-4 text-muted-foreground leading-relaxed">
+                    <p className="mt-4 text-foreground/80 leading-relaxed">
                       {founder.bio}
                     </p>
 
@@ -114,7 +114,7 @@ export function TeamPageContent() {
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.1, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground transition-colors"
+                            className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-foreground/70 hover:bg-white/10 hover:text-primary transition-colors"
                           >
                             {Icon && <Icon className="h-5 w-5" />}
                           </motion.a>
@@ -137,14 +137,14 @@ export function TeamPageContent() {
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 className="group"
               >
-                <div className="glass h-full rounded-2xl p-6 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                <div className="glass card-3d gradient-border-thick h-full rounded-2xl p-6 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                   {/* Avatar */}
                   <div className="relative mx-auto mb-4">
                     <img
-  									src={member.image}
- 										 alt={member.name}
-  										className="h-24 w-24 mx-auto rounded-full object-cover border border-white/10 shadow-lg"
-											/>
+                      src={member.image}
+                      alt={member.name}
+                      className="h-24 w-24 mx-auto rounded-full object-cover border border-white/10 shadow-lg"
+                    />
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent opacity-0 group-hover:opacity-20 transition-opacity" />
                   </div>
 
@@ -153,7 +153,7 @@ export function TeamPageContent() {
                     {member.name}
                   </h3>
                   <p className="text-sm text-primary">{member.role}</p>
-                  <p className="mt-3 text-sm text-muted-foreground line-clamp-3">
+                  <p className="mt-3 text-sm text-foreground/80 line-clamp-3">
                     {member.bio}
                   </p>
 
@@ -183,7 +183,7 @@ export function TeamPageContent() {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
-                          className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground transition-colors"
+                          className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-foreground/70 hover:bg-white/10 hover:text-primary transition-colors"
                         >
                           {Icon && <Icon className="h-4 w-4" />}
                         </motion.a>
@@ -203,16 +203,16 @@ export function TeamPageContent() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="mt-16 text-center"
           >
-            <div className="glass inline-block rounded-2xl px-8 py-6">
+            <div className="glass card-3d gradient-border-thick inline-block rounded-2xl px-8 py-6">
               <h3 className="text-xl font-semibold text-foreground">
                 Want to join our team?
               </h3>
-              <p className="mt-2 text-muted-foreground">
+              <p className="mt-2 text-foreground/80">
                 We&apos;re always looking for talented individuals to collaborate with.
               </p>
               <a
                 href="/contact"
-                className="mt-4 inline-flex items-center text-primary hover:underline"
+                className="mt-4 inline-flex items-center text-primary hover:underline font-medium"
               >
                 Get in touch
               </a>
@@ -222,4 +222,4 @@ export function TeamPageContent() {
       </section>
     </PageTransition>
   );
-                          }
+}
