@@ -38,7 +38,7 @@ export function SkillsPreview() {
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Technical Skills
           </h2>
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-lg text-foreground/80">
             Specialized in building secure, intelligent systems across multiple domains.
           </p>
         </motion.div>
@@ -57,9 +57,12 @@ export function SkillsPreview() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`group ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
               >
-                <div className={`glass h-full rounded-2xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 ${
-                  index === 0 ? 'flex flex-col' : ''
-                }`}>
+                {/* Apple-style glass card + gradient border + 3D + hover glow */}
+                <div
+                  className={`glass card-3d gradient-border-thick h-full rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] ${
+                    index === 0 ? 'flex flex-col' : ''
+                  }`}
+                >
                   {/* Header */}
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
@@ -69,7 +72,7 @@ export function SkillsPreview() {
                       <h3 className="text-lg font-semibold text-foreground">
                         {category.name}
                       </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
+                      <p className="mt-1 text-sm text-foreground/70">
                         {category.description}
                       </p>
                     </div>
@@ -102,8 +105,8 @@ export function SkillsPreview() {
                       {category.skills.slice(0, 3).map((skill) => (
                         <div key={skill.name}>
                           <div className="mb-1 flex justify-between text-sm">
-                            <span className="text-muted-foreground">{skill.name}</span>
-                            <span className="text-foreground">{skill.level}%</span>
+                            <span className="text-foreground/80">{skill.name}</span>
+                            <span className="text-foreground font-semibold">{skill.level}%</span>
                           </div>
                           <div className="h-2 overflow-hidden rounded-full bg-white/10">
                             <motion.div
@@ -133,7 +136,11 @@ export function SkillsPreview() {
           className="mt-12 flex justify-center"
         >
           <Link href="/skills">
-            <Button variant="outline" size="lg" className="group bg-white/5 border-white/10">
+            <Button
+              variant="outline"
+              size="lg"
+              className="group bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/30 hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] transition-all duration-300"
+            >
               View All Skills
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -142,4 +149,4 @@ export function SkillsPreview() {
       </div>
     </section>
   );
-                      }
+        }
