@@ -100,6 +100,8 @@ export function Navbar() {
                 );
               })}
             </div>
+
+            {/* Theme toggle */}
             <div className="hidden md:flex items-center gap-2">
               <ThemeToggle />
             </div>
@@ -140,10 +142,11 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 md:hidden"
           >
-            {/* Backdrop — closes only when clicking directly on it */}
+            {/* Backdrop – closes when clicking directly on it */}
             <div
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               onClick={(e) => {
+                // Only close if the click is exactly on the backdrop
                 if (e.target === e.currentTarget) {
                   setIsMobileMenuOpen(false);
                 }
@@ -156,16 +159,23 @@ export function Navbar() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="absolute right-0 top-0 bottom-0 w-72 bg-card/95 backdrop-blur-xl p-6 shadow-2xl z-10"
             >
+              {/* Close button – guaranteed to work */}
               <div className="flex justify-start mb-8">
-                <motion.button
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5"
                   aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
-                </motion.button>
+                </button>
               </div>
+
+              {/* Navigation links */}
               <div className="flex flex-col gap-2">
                 {navItems.map((item, index) => {
                   const isActive = pathname === item.href;
@@ -214,4 +224,4 @@ export function Navbar() {
       </AnimatePresence>
     </>
   );
-                }
+                        }
