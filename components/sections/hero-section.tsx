@@ -38,17 +38,17 @@ export function HeroSection() {
           {/* Decorative gold accents on the image area */}
           <div className="absolute top-1/4 right-1/3 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(212,176,106,0.12)_0%,transparent_70%)] blur-3xl" />
           <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.04)_0%,transparent_70%)] blur-3xl" />
-          
+
           {/* Placeholder text on image */}
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
             <span className="text-white text-6xl font-bold tracking-widest">YOUR IMAGE</span>
           </div>
         </div>
-        
+
         {/* Gradient overlays for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        
+
         {/* Subtle noise grain */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -65,7 +65,7 @@ export function HeroSection() {
           ══════════════════════════════════════ */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          
+
           {/* ── LEFT: All text content ── */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -136,26 +136,27 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden flex justify-center relative"
+            className="flex items-center justify-center relative h-full min-h-[300px]"
           >
-            {/* ✨ Demo text card – bottom right corner */}
+            {/* ✨ Demo text card – bottom right corner (visible on all devices) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute bottom-8 right-8 glass rounded-2xl border border-[var(--glass-border)] px-5 py-4 text-sm text-white space-y-2.5 backdrop-blur-xl"
+              className="absolute bottom-8 right-8 z-20 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-xl px-5 py-4 text-sm text-white space-y-2.5 shadow-lg"
+              style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
             >
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-blue-400" />
-                <span>5+ Years Experience</span>
+                <span className="text-white/90">5+ Years Experience</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-blue-400" />
-                <span>AI &amp; Security Expert</span>
+                <span className="text-white/90">AI &amp; Security Expert</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-blue-400" />
-                <span>10+ Projects Delivered</span>
+                <span className="text-white/90">10+ Projects Delivered</span>
               </div>
             </motion.div>
 
@@ -163,7 +164,7 @@ export function HeroSection() {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity }}
-              className="absolute -bottom-3 -right-3 glass rounded-2xl border border-[var(--glass-border)] px-5 py-3 text-sm text-[var(--text)] shadow-2xl"
+              className="absolute -bottom-3 -right-3 z-20 glass rounded-2xl border border-[var(--glass-border)] px-5 py-3 text-sm text-[var(--text)] shadow-2xl"
             >
               <span className="text-[var(--accent)] font-bold">10+</span> Projects
             </motion.div>
@@ -175,4 +176,4 @@ export function HeroSection() {
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[var(--bg)] to-transparent z-10" />
     </section>
   );
-                }
+              }
