@@ -136,7 +136,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:flex items-center justify-center relative"
+            className="hidden flex justify-center relative"
           >
             {/* ✨ Demo text card – bottom right corner */}
             <motion.div
