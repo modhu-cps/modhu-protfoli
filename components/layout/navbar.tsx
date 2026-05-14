@@ -117,7 +117,7 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button – always shows Menu icon */}
+            {/* Mobile Menu Button */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -140,9 +140,14 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 md:hidden"
           >
+            {/* Backdrop — closes only when clicking directly on it */}
             <div
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  setIsMobileMenuOpen(false);
+                }
+              }}
             />
             <motion.nav
               initial={{ x: '100%' }}
@@ -154,10 +159,7 @@ export function Navbar() {
               <div className="flex justify-start mb-8">
                 <motion.button
                   whileTap={{ scale: 0.9 }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsMobileMenuOpen(false);
-                  }}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5"
                   aria-label="Close menu"
                 >
@@ -212,4 +214,4 @@ export function Navbar() {
       </AnimatePresence>
     </>
   );
-                          }
+                }
