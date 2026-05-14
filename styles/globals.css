@@ -32,13 +32,13 @@
 
   --radius: 0.875rem;
 
-  /* glass fix */
-  --glass-bg: oklch(1 0 0 / 0.55);
-  --glass-border: oklch(0 0 0 / 0.08);
+  /* glass fix – stronger background for Apple‑style */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
-   DARK MODE (FIXED)
+   DARK MODE
 ========================= */
 .dark {
   --background: oklch(0.12 0.01 240);
@@ -64,12 +64,12 @@
   --input: oklch(1 0 0 / 0.08);
   --ring: oklch(0.55 0.18 240);
 
-  --glass-bg: oklch(0.22 0.015 240 / 0.6);
-  --glass-border: oklch(1 0 0 / 0.12);
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.12);
 }
 
 /* =========================
-   BASE FIX
+   BASE
 ========================= */
 @layer base {
   * {
@@ -83,27 +83,36 @@
 }
 
 /* =========================
-   GLASS FIX (IMPORTANT)
+   🫧 GLASS (only one definition – stronger blur)
 ========================= */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
+  /* Dark adjustments */
+  .dark .glass {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-/* hover fix */
-.glass:hover {
-  transform: translateY(-2px);
-  transition: 0.3s ease;
+  /* Hover lift – consistent with Apple feel */
+  .glass:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  .dark .glass:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* =========================
-   CARD FIX (IMPORTANT)
+   CARD FIX (existing)
 ========================= */
 [data-slot="card"],
 .card {
@@ -132,86 +141,29 @@ textarea {
   border-radius: 10px;
 }
 
-/* ============================================
-   🌈 Thicker Gradient Border (3px)
-   ============================================ */
+/* =========================
+   🌈 THICK GRADIENT BORDER (3px) – NO background override
+========================= */
 @layer components {
   .gradient-border-thick {
     position: relative;
-    @apply rounded-2xl;
+    border-radius: 1rem; /* tailwind rounding */
+    isolation: isolate;
+    /* ⚠️ background comes from .glass – nothing here */
   }
+
   .gradient-border-thick::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 3px; /* মোটা বর্ডার */
+    padding: 3px;                     /* মোটা বর্ডার */
     background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-  }
-}
-
-/* ============================================
-   🫧 Stronger Glass (মোটা ব্লার, স্পষ্ট ব্যাকগ্রাউন্ড)
-   ============================================ */
-@layer components {
-  .glass {
-    background: rgba(255, 255, 255, 0.45);  /* opacity বাড়ানো */
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
-  }
-
-  .dark .glass {
-    background: rgba(15, 23, 42, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.05);
-  }
-}
-
-/* ============================================
-   🌈 Thick Gradient Border (3px) – fully opaque
-   ============================================ */
-@layer components {
-  .gradient-border-thick {
-    position: relative;
-    border-radius: 1rem;  /* rounded-xl বা 2xl যেটা দরকার */
-    background: rgba(255,255,255,0.45); /* fallback */
-    backdrop-filter: blur(24px);  /* গ্লাসের সাথে মিলিয়ে */
-    outline: 3px solid transparent;
-    outline-offset: -3px;
-    /* gradient border via outline + background-clip কৌশল */
-    background-image: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), 
-                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-  }
-
-  /* dark mode adjust */
-  .dark .gradient-border-thick {
-    background-image: linear-gradient(rgba(15,23,42,0.65), rgba(15,23,42,0.65)), 
-                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
-  }
-
-  /* যদি আলাদা করে glass + gradient-border-thick ব্যবহার করো,
-     তাহলে এভাবে দিবে: <div className="glass gradient-border-thick ..."> */
-  .glass.gradient-border-thick {
-    background: rgba(255,255,255,0.45); /* opacity ওভাররাইড হতে পারে, তাই নির্দিষ্ট করো */
-    backdrop-filter: blur(24px);
-    outline: 3px solid transparent;
-    outline-offset: -3px;
-    background-image: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), 
-                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-  }
-  .dark .glass.gradient-border-thick {
-    background-image: linear-gradient(rgba(15,23,42,0.65), rgba(15,23,42,0.65)), 
-                      linear-gradient(135deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+    z-index: -1;
   }
 }
