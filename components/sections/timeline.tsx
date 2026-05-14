@@ -12,9 +12,21 @@ const typeIcons = {
 };
 
 const typeColors = {
-  work: 'from-primary to-primary',
-  education: 'from-accent to-accent',
-  achievement: 'from-yellow-500 to-orange-500',
+  work: {
+    border: 'from-blue-500 via-sky-400 to-indigo-500',
+    text: 'text-blue-600 dark:text-blue-400',
+    bg: 'from-blue-500/20 to-sky-500/20',
+  },
+  education: {
+    border: 'from-violet-500 via-purple-400 to-fuchsia-500',
+    text: 'text-violet-600 dark:text-violet-400',
+    bg: 'from-violet-500/20 to-purple-500/20',
+  },
+  achievement: {
+    border: 'from-amber-500 via-orange-400 to-yellow-500',
+    text: 'text-amber-600 dark:text-amber-400',
+    bg: 'from-amber-500/20 to-orange-500/20',
+  },
 };
 
 export function Timeline() {
@@ -48,6 +60,7 @@ export function Timeline() {
           {timelineEvents.map((event, index) => {
             const Icon = typeIcons[event.type];
             const isEven = index % 2 === 0;
+            const colors = typeColors[event.type];
 
             return (
               <motion.div
@@ -67,10 +80,20 @@ export function Timeline() {
                   <p className="mt-2 text-muted-foreground">{event.description}</p>
                 </div>
 
-                {/* Icon */}
+                {/* Icon – Glass + 3D + Gradient Border + Thicker */}
                 <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2">
-                  <div className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${typeColors[event.type]} shadow-lg`}>
-                    <Icon className="h-7 w-7 text-white" />
+                  <div
+                    className={`
+                      flex h-20 w-20 items-center justify-center rounded-2xl
+                      glass card-3d gradient-border-thick
+                      bg-gradient-to-br ${colors.bg} dark:bg-none
+                      shadow-lg shadow-${event.type === 'achievement' ? 'amber' : event.type === 'education' ? 'violet' : 'blue'}-500/20
+                    `}
+                  >
+                    <Icon
+                      className={`h-8 w-8 ${colors.text}`}
+                      strokeWidth={2.5}
+                    />
                   </div>
                 </div>
 
@@ -83,4 +106,4 @@ export function Timeline() {
       </div>
     </section>
   );
-                    }
+}
