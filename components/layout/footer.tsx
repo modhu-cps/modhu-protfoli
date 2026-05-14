@@ -15,6 +15,17 @@ const socialIcons: Record<string, React.ComponentType<{ className?: string }>> =
   send: Send,
 };
 
+// Inline gradient styles for footer social icons
+const socialGradient: Record<string, string> = {
+  github: 'linear-gradient(to bottom right, #374151, #111827)',
+  linkedin: 'linear-gradient(to bottom right, #2563eb, #1e40af)',
+  twitter: 'linear-gradient(to bottom right, #38bdf8, #0284c7)',
+  youtube: 'linear-gradient(to bottom right, #ef4444, #b91c1c)',
+  instagram: 'linear-gradient(to bottom right, #ec4899, #7c3aed)',
+  facebook: 'linear-gradient(to bottom right, #2563eb, #1e3a8a)',
+  send: 'linear-gradient(to bottom right, #a855f7, #ec4899)',
+};
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -22,7 +33,7 @@ export function Footer() {
     <footer className="relative border-t border-border/50 bg-card/30">
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none" />
-      
+
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
@@ -40,10 +51,11 @@ export function Footer() {
                 </span>
               </motion.div>
             </Link>
-            <p className="mt-4 max-w-sm text-muted-foreground">
-              Building intelligent systems at the intersection of AI, security, and cloud infrastructure. 
+            <p className="mt-4 max-w-sm text-foreground/80">
+              Building intelligent systems at the intersection of AI, security, and cloud infrastructure.
               Creating solutions that protect and empower.
             </p>
+            {/* Social icons – now with gradient, glass, 3D */}
             <div className="mt-6 flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = socialIcons[social.icon];
@@ -53,9 +65,18 @@ export function Footer() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileHover={{ scale: 1.15, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
+                    style={{
+                      backgroundImage: socialGradient[social.icon] || 'linear-gradient(to bottom right, #6b21a8, #db2777)',
+                    }}
+                    className="
+                      flex h-10 w-10 items-center justify-center rounded-xl
+                      text-white shadow-md
+                      transition-all duration-300
+                      hover:shadow-lg hover:scale-110
+                      hover:shadow-white/20
+                    "
                     aria-label={social.name}
                   >
                     {Icon && <Icon className="h-5 w-5" />}
@@ -75,7 +96,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-foreground/80 transition-colors hover:text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -94,7 +115,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-foreground/80 transition-colors hover:text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -106,10 +127,10 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 md:flex-row">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-foreground/70">
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
+          <div className="flex gap-6 text-sm text-foreground/70">
             <Link href="/privacy" className="hover:text-foreground transition-colors">
               Privacy Policy
             </Link>
@@ -121,4 +142,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+                  }
