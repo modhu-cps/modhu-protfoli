@@ -48,7 +48,7 @@ export function ProjectsPageContent() {
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               My <span className="gradient-text">Projects</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-foreground/80 max-w-2xl mx-auto">
               A collection of projects showcasing my expertise in AI, security,
               cloud infrastructure, and IoT systems.
             </p>
@@ -69,7 +69,7 @@ export function ProjectsPageContent() {
                 placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 bg-white/5 border-white/10 h-12 rounded-xl"
+                className="pl-12 bg-white/5 border-white/10 h-12 rounded-xl focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
               />
             </div>
 
@@ -83,8 +83,8 @@ export function ProjectsPageContent() {
                   onClick={() => setActiveCategory(category.id)}
                   className={
                     activeCategory === category.id
-                      ? 'bg-gradient-to-r from-primary to-accent'
-                      : 'bg-white/5 border-white/10 hover:bg-white/10'
+                      ? 'bg-gradient-to-r from-primary to-accent hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all duration-300'
+                      : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/30 transition-all duration-300'
                   }
                 >
                   {category.label}
@@ -111,7 +111,8 @@ export function ProjectsPageContent() {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="group"
                 >
-                  <div className="glass h-full rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                  {/* Apple-style card: glass + 3D + gradient border + hover glow */}
+                  <div className="glass card-3d gradient-border-thick h-full rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                     {/* Project image */}
                     <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -177,7 +178,7 @@ export function ProjectsPageContent() {
                       <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
-                      <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                      <p className="mt-2 text-sm text-foreground/80 line-clamp-2">
                         {project.description}
                       </p>
 
@@ -202,14 +203,14 @@ export function ProjectsPageContent() {
                       {/* Features */}
                       {project.features && (
                         <div className="mt-4 pt-4 border-t border-border/50">
-                          <p className="text-xs text-muted-foreground mb-2">
+                          <p className="text-xs text-foreground/70 mb-2 font-medium">
                             Key Features:
                           </p>
                           <div className="flex flex-wrap gap-1">
                             {project.features.slice(0, 3).map((feature) => (
                               <span
                                 key={feature}
-                                className="text-xs text-muted-foreground"
+                                className="text-xs text-foreground/70"
                               >
                                 • {feature}
                               </span>
@@ -231,12 +232,12 @@ export function ProjectsPageContent() {
               animate={{ opacity: 1 }}
               className="text-center py-16"
             >
-              <p className="text-muted-foreground text-lg">
+              <p className="text-foreground/80 text-lg">
                 No projects found matching your criteria.
               </p>
               <Button
                 variant="outline"
-                className="mt-4 bg-white/5 border-white/10"
+                className="mt-4 bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/30 hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-300"
                 onClick={() => {
                   setSearchQuery('');
                   setActiveCategory('all');
@@ -250,4 +251,4 @@ export function ProjectsPageContent() {
       </section>
     </PageTransition>
   );
-          }
+                              }
