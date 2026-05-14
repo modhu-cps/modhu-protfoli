@@ -17,7 +17,7 @@ export function StatsSection() {
     <section className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => {
@@ -33,7 +33,8 @@ export function StatsSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative"
               >
-                <div className="glass rounded-2xl p-8 text-center transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                {/* Apple‑style glass + 3D + gradient border + hover glow */}
+                <div className="glass card-3d gradient-border-thick rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                   {/* Icon */}
                   {Icon && (
                     <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
@@ -46,11 +47,8 @@ export function StatsSection() {
                     <AnimatedCounter value={number} suffix={suffix} />
                   </div>
 
-                  {/* Label */}
-                  <p className="mt-2 text-muted-foreground">{stat.label}</p>
-
-                  {/* Decorative gradient */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  {/* Label – now clearly visible */}
+                  <p className="mt-2 text-foreground/80 font-medium">{stat.label}</p>
                 </div>
               </motion.div>
             );
