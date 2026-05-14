@@ -10,7 +10,7 @@ export function CTASection() {
     <section className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
+
       {/* Decorative orbs */}
       <motion.div
         animate={{
@@ -33,7 +33,7 @@ export function CTASection() {
             <br />
             <span className="gradient-text">Amazing Together</span>
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
+          <p className="mt-6 text-lg text-foreground/80 max-w-2xl mx-auto text-balance">
             Have a project in mind? I&apos;m always open to discussing new opportunities,
             creative ideas, or collaborations in AI, security, and cloud technologies.
           </p>
@@ -47,14 +47,21 @@ export function CTASection() {
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <Link href="/contact">
-            <Button size="lg" className="group bg-gradient-to-r from-primary to-accent hover:opacity-90">
+            <Button
+              size="lg"
+              className="group bg-gradient-to-r from-primary to-accent hover:opacity-90 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] transition-all duration-300"
+            >
               <Mail className="mr-2 h-4 w-4" />
               Get in Touch
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
           <Link href="/about">
-            <Button size="lg" variant="outline" className="bg-white/5 border-white/10 hover:bg-white/10">
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-white/5 border-white/10 hover:bg-white/10 hover:border-primary/30 hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-300"
+            >
               <MessageCircle className="mr-2 h-4 w-4" />
               Learn More About Me
             </Button>
@@ -69,10 +76,13 @@ export function CTASection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-16"
         >
-          <p className="text-sm text-muted-foreground mb-4">Trusted by companies worldwide</p>
+          <p className="text-sm text-foreground/60 mb-4">Trusted by companies worldwide</p>
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-50">
             {['AWS', 'Google Cloud', 'Microsoft', 'GitHub', 'Vercel'].map((company) => (
-              <span key={company} className="text-lg font-semibold text-muted-foreground">
+              <span
+                key={company}
+                className="text-lg font-semibold text-foreground/70"
+              >
                 {company}
               </span>
             ))}
@@ -81,4 +91,4 @@ export function CTASection() {
       </div>
     </section>
   );
-          }
+}
