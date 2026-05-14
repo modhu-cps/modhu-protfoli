@@ -62,22 +62,22 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             </h1>
 
             {/* Description */}
-            <p className="mt-6 text-xl text-muted-foreground">
+            <p className="mt-6 text-xl text-foreground/80">
               {post.description}
             </p>
 
             {/* Meta */}
-            <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-foreground/70">
               <span className="flex items-center gap-2">
-                <User className="h-4 w-4" />
+                <User className="h-4 w-4 text-primary" />
                 {post.author}
               </span>
               <span className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
+                <Calendar className="h-4 w-4 text-primary" />
                 {formatDate(post.date)}
               </span>
               <span className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
+                <Clock className="h-4 w-4 text-primary" />
                 {post.readingTime}
               </span>
             </div>
@@ -98,7 +98,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12 aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20"
+            className="mb-12 aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 gradient-border-thick"
           >
             <div className="h-full w-full flex items-center justify-center">
               <div className="text-8xl font-bold text-white/10">{post.title.charAt(0)}</div>
@@ -110,7 +110,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="prose prose-invert prose-lg max-w-none"
+            className="prose prose-invert prose-lg max-w-none text-foreground/90"
           >
             <MDXRenderer content={post.content} />
           </motion.div>
@@ -123,14 +123,14 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             className="mt-16 pt-8 border-t border-border/50"
           >
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p className="text-muted-foreground">
+              <p className="text-foreground/80">
                 Thanks for reading! Have questions?{' '}
-                <Link href="/contact" className="text-primary hover:underline">
+                <Link href="/contact" className="text-primary hover:underline font-medium">
                   Get in touch
                 </Link>
               </p>
               <Link href="/blog">
-                <Button variant="outline" className="bg-white/5 border-white/10">
+                <Button variant="outline" className="glass bg-white/5 border-white/10 hover:bg-white/10">
                   More Articles
                 </Button>
               </Link>
@@ -140,4 +140,4 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       </article>
     </PageTransition>
   );
-            }
+              }
