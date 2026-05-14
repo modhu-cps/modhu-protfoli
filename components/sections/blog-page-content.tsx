@@ -63,7 +63,7 @@ export function BlogPageContent({ posts, categories, featuredPosts }: BlogPageCo
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Thoughts & <span className="gradient-text">Insights</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-foreground/80 max-w-2xl mx-auto">
               Exploring the intersection of AI, security, and technology.
               Deep dives, tutorials, and industry insights.
             </p>
@@ -132,7 +132,7 @@ export function BlogPageContent({ posts, categories, featuredPosts }: BlogPageCo
                 Featured Article
               </h2>
               <Link href={`/blog/${featuredPosts[0].slug}`}>
-                <article className="group glass rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                <article className="group glass card-3d gradient-border-thick rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Image */}
                     <div className="relative aspect-video md:aspect-auto bg-gradient-to-br from-primary/20 to-accent/20">
@@ -160,10 +160,10 @@ export function BlogPageContent({ posts, categories, featuredPosts }: BlogPageCo
                       <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                         {featuredPosts[0].title}
                       </h3>
-                      <p className="mt-3 text-muted-foreground line-clamp-3">
+                      <p className="mt-3 text-foreground/80 line-clamp-3">
                         {featuredPosts[0].description}
                       </p>
-                      <div className="mt-4 flex items-center text-primary font-medium">
+                      <div className="mt-4 flex items-center text-primary font-semibold">
                         Read article
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </div>
@@ -192,7 +192,7 @@ export function BlogPageContent({ posts, categories, featuredPosts }: BlogPageCo
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                 >
                   <Link href={`/blog/${post.slug}`} className="group block h-full">
-                    <div className="glass h-full rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+                    <div className="glass card-3d gradient-border-thick h-full rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.25)]">
                       {/* Image */}
                       <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-accent/20">
                         <div className="absolute inset-0 flex items-center justify-center">
@@ -215,7 +215,7 @@ export function BlogPageContent({ posts, categories, featuredPosts }: BlogPageCo
                         <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                           {post.title}
                         </h3>
-                        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                        <p className="mt-2 text-sm text-foreground/80 line-clamp-2">
                           {post.description}
                         </p>
                         <div className="mt-4 flex flex-wrap gap-2">
