@@ -54,15 +54,18 @@ export function AboutStats() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="glass card-3d gradient-border-thick p-6 h-full shadow-lg shadow-black/5 dark:shadow-black/40">
+                {/* Glass + 3D + Gradient Border + Colored Glow */}
+                <div className="glass card-3d gradient-border-thick p-6 h-full shadow-lg shadow-black/5 dark:shadow-black/30 transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] dark:group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 mb-4">
                     <Icon className="h-6 w-6 text-foreground dark:text-white" />
                   </div>
                   <div className="text-3xl font-bold text-foreground">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                   </div>
-                  <div className="mt-1 font-medium text-foreground">{stat.label}</div>
-                  <p className="mt-1 text-sm text-muted-foreground">{stat.description}</p>
+                  <div className="mt-1 font-semibold text-foreground">{stat.label}</div>
+                  <p className="mt-1 text-sm font-medium text-foreground/80 dark:text-foreground/90">
+                    {stat.description}
+                  </p>
                 </div>
               </motion.div>
             );
