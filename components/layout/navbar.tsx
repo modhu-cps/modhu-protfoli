@@ -101,8 +101,8 @@ export function Navbar() {
               })}
             </div>
             <div className="hidden md:flex items-center gap-2">
- 				 <ThemeToggle />
-	 </div>
+              <ThemeToggle />
+            </div>
 
             {/* CTA Button */}
             <div className="hidden md:block">
@@ -117,18 +117,14 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button – now always shows Menu icon (no X) */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 md:hidden"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              <Menu className="h-5 w-5" />
             </motion.button>
           </nav>
         </div>
@@ -160,6 +156,7 @@ export function Navbar() {
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5"
+                  aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
                 </motion.button>
@@ -212,6 +209,4 @@ export function Navbar() {
       </AnimatePresence>
     </>
   );
-              }
-
-
+}
