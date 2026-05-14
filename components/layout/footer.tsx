@@ -15,17 +15,6 @@ const socialIcons: Record<string, React.ComponentType<{ className?: string }>> =
   send: Send,
 };
 
-// Inline gradient styles for footer social icons
-const socialGradient: Record<string, string> = {
-  github: 'linear-gradient(to bottom right, #374151, #111827)',
-  linkedin: 'linear-gradient(to bottom right, #2563eb, #1e40af)',
-  twitter: 'linear-gradient(to bottom right, #38bdf8, #0284c7)',
-  youtube: 'linear-gradient(to bottom right, #ef4444, #b91c1c)',
-  instagram: 'linear-gradient(to bottom right, #ec4899, #7c3aed)',
-  facebook: 'linear-gradient(to bottom right, #2563eb, #1e3a8a)',
-  send: 'linear-gradient(to bottom right, #a855f7, #ec4899)',
-};
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -55,7 +44,7 @@ export function Footer() {
               Building intelligent systems at the intersection of AI, security, and cloud infrastructure.
               Creating solutions that protect and empower.
             </p>
-            {/* Social icons – now with gradient, glass, 3D */}
+            {/* Social icons – glass, 3D, gradient border, black shadow */}
             <div className="mt-6 flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = socialIcons[social.icon];
@@ -67,19 +56,10 @@ export function Footer() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.15, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{
-                      backgroundImage: socialGradient[social.icon] || 'linear-gradient(to bottom right, #6b21a8, #db2777)',
-                    }}
-                    className="
-                      flex h-10 w-10 items-center justify-center rounded-xl
-                      text-white shadow-md
-                      transition-all duration-300
-                      hover:shadow-lg hover:scale-110
-                      hover:shadow-white/20
-                    "
+                    className="glass card-3d gradient-border-thick flex h-10 w-10 items-center justify-center rounded-xl shadow-md shadow-black/10 dark:shadow-black/30 transition-all duration-300 hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/50"
                     aria-label={social.name}
                   >
-                    {Icon && <Icon className="h-5 w-5" />}
+                    {Icon && <Icon className="h-5 w-5 text-foreground dark:text-white" />}
                   </motion.a>
                 );
               })}
@@ -142,4 +122,4 @@ export function Footer() {
       </div>
     </footer>
   );
-                  }
+}
