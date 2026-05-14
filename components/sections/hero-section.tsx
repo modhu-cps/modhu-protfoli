@@ -34,16 +34,11 @@ export function HeroSection() {
             className="absolute inset-0 h-full w-full object-cover"
           />
         */}
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
-          {/* Decorative gold accents on the image area */}
-          <div className="absolute top-1/4 right-1/3 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(212,176,106,0.12)_0%,transparent_70%)] blur-3xl" />
-          <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.04)_0%,transparent_70%)] blur-3xl" />
-
-          {/* Placeholder text on image */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-10">
-            <span className="text-white text-6xl font-bold tracking-widest">YOUR IMAGE</span>
-          </div>
-        </div>
+        <img 
+  src="/profile.jpg" 
+  alt="Profile" 
+  className="absolute inset-0 h-full w-full object-cover"
+/>
 
         {/* Gradient overlays for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
