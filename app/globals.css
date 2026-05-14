@@ -24,8 +24,8 @@
   --input: oklch(0.922 0.003 240 / 0.6);
   --ring: oklch(0.6 0.12 240);
   --radius: 0.875rem;
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(0, 0, 0, 0.12);
 }
 
 /* =========================
@@ -48,8 +48,8 @@
   --border: oklch(1 0 0 / 0.12);
   --input: oklch(1 0 0 / 0.08);
   --ring: oklch(0.55 0.18 240);
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.15);
 }
 
 /* =========================
@@ -91,32 +91,47 @@
 }
 
 /* =========================
-   🫧 GLASS (strong blur, Apple style)
+   🫧 GLASS (stronger blur + visible depth)
 ========================= */
 @layer components {
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
+
   .dark .glass {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   }
+
   .glass:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transform: translateY(-3px);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.08);
   }
+
   .dark .glass:hover {
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3);
   }
 }
 
 /* =========================
-   🃏 3D Card
+   🃏 3D Card (more pronounced tilt + shadow)
 ========================= */
 @layer components {
   .card-3d {
@@ -124,29 +139,44 @@
     transform-style: preserve-3d;
     perspective: 1000px;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   }
+
   .card-3d:hover {
-    transform: translateY(-6px) rotateX(2deg) rotateY(1deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+    transform: translateY(-8px) rotateX(3deg) rotateY(2deg);
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.18),
+      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
   }
+
   .dark .card-3d {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   }
+
   .dark .card-3d:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(255, 255, 255, 0.15) inset;
   }
 }
 
 /* =========================
-   🌈 THICK GRADIENT BORDER (3px)
+   🌈 THICK GRADIENT BORDER (3px) + soft outer glow
 ========================= */
 @layer components {
   .gradient-border-thick {
     position: relative;
     border-radius: 1rem;
     isolation: isolate;
+    /* subtle constant glow */
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.15);
+    transition: box-shadow 0.3s ease;
   }
+
+  .gradient-border-thick:hover {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.35), 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+
   .gradient-border-thick::before {
     content: '';
     position: absolute;
@@ -160,6 +190,14 @@
     mask-composite: exclude;
     pointer-events: none;
     z-index: -1;
+  }
+
+  /* dark mode glow adjustment */
+  .dark .gradient-border-thick {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.25);
+  }
+  .dark .gradient-border-thick:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.45), 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -200,4 +238,4 @@ textarea {
   a, button {
     transition: all 0.2s ease;
   }
-}
+     }
