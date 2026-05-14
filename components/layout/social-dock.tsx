@@ -1,23 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Youtube,
-  Instagram,
-  Facebook,
-  Send,
-  ExternalLink,
-} from 'lucide-react';
+import { Github, Linkedin, Twitter, Youtube, Instagram, Facebook, Send, ExternalLink } from 'lucide-react';
 import { socialLinks } from '@/lib/config';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const socialIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   github: Github,
@@ -29,15 +15,15 @@ const socialIcons: Record<string, React.ComponentType<{ className?: string }>> =
   send: Send,
 };
 
-// প্রতিটি সোশ্যাল প্ল্যাটফর্মের জন্য ইউনিক ভাইব্রেন্ট ব্যাকগ্রাউন্ড কালার
-const socialColors: Record<string, string> = {
-  github: 'from-gray-700 to-gray-900',
-  linkedin: 'from-blue-600 to-blue-800',
-  twitter: 'from-sky-400 to-blue-500',
-  youtube: 'from-red-500 to-red-700',
-  instagram: 'from-purple-500 to-pink-500',
-  facebook: 'from-blue-500 to-blue-700',
-  send: 'from-cyan-400 to-blue-500',
+// Inline gradient styles (Tailwind‑safe)
+const socialGradient: Record<string, string> = {
+  github: 'linear-gradient(to bottom right, #374151, #111827)',
+  linkedin: 'linear-gradient(to bottom right, #2563eb, #1e40af)',
+  twitter: 'linear-gradient(to bottom right, #38bdf8, #0284c7)',
+  youtube: 'linear-gradient(to bottom right, #ef4444, #b91c1c)',
+  instagram: 'linear-gradient(to bottom right, #ec4899, #7c3aed)',
+  facebook: 'linear-gradient(to bottom right, #2563eb, #1e3a8a)',
+  send: 'linear-gradient(to bottom right, #a855f7, #ec4899)',
 };
 
 export function SocialDock() {
@@ -49,13 +35,11 @@ export function SocialDock() {
         transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 lg:block"
       >
-        {/* ডক কন্টেইনার – গ্লাস + 3D + গ্রেডিয়েন্ট বর্ডার */}
-        <div className="glass card-3d gradient-border-thick rounded-2xl p-2">
+        {/* Main dock – glass + 3D + gradient border */}
+        <div className="glass card-3d gradient-border-thick rounded-2xl p-2 shadow-xl shadow-black/10 dark:shadow-black/30">
           <div className="flex flex-col gap-2">
             {socialLinks.map((social, index) => {
               const Icon = socialIcons[social.icon];
-              const gradient = socialColors[social.icon] || 'from-primary to-accent';
-
               return (
                 <Tooltip key={social.name}>
                   <TooltipTrigger asChild>
@@ -66,12 +50,22 @@ export function SocialDock() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + index * 0.05 }}
-                      whileHover={{ scale: 1.15, x: -4 }}
+                      whileHover={{ scale: 1.1, x: -4 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`group flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-md transition-all duration-300 hover:shadow-lg bg-gradient-to-br ${gradient}`}
+                      // Inline style ensures gradient survives Tailwind purge
+                      style={{
+                        backgroundImage: socialGradient[social.icon] || 'linear-gradient(to bottom right, #6b21a8, #db2777)',
+                      }}
+                      className="
+                        group flex h-10 w-10 items-center justify-center rounded-xl
+                        text-white shadow-md
+                        transition-all duration-300
+                        hover:shadow-lg hover:scale-110
+                        hover:shadow-white/20
+                      "
                       aria-label={social.name}
                     >
-                      {Icon && <Icon className="h-5 w-5 drop-shadow-sm" />}
+                      {Icon && <Icon className="h-5 w-5" />}
                     </motion.a>
                   </TooltipTrigger>
                   <TooltipContent side="left" className="flex items-center gap-2">
